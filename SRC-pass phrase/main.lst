@@ -1,0 +1,271 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	parserecCommand
+  18               	parserecCommand:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24 0000 FC01      		movw r30,r24
+  25               	.LM2:
+  26 0002 8181      		ldd r24,Z+1
+  27               	.LVL1:
+  28 0004 8233      		cpi r24,lo8(50)
+  29 0006 01F4      		brne .L14
+  30 0008 8781      		ldd r24,Z+7
+  31 000a 8333      		cpi r24,lo8(51)
+  32 000c 01F4      		brne .L14
+  33               	.LM3:
+  34 000e 8581      		ldd r24,Z+5
+  35 0010 8133      		cpi r24,lo8(49)
+  36 0012 01F4      		brne .L3
+  37               	.LM4:
+  38 0014 8381      		ldd r24,Z+3
+  39 0016 8133      		cpi r24,lo8(49)
+  40 0018 01F4      		brne .L4
+  41               	.LM5:
+  42 001a 289A      		sbi 37-32,0
+  43 001c 0895      		ret
+  44               	.L4:
+  45               	.LM6:
+  46 001e 8233      		cpi r24,lo8(50)
+  47 0020 01F4      		brne .L5
+  48               	.LM7:
+  49 0022 299A      		sbi 37-32,1
+  50 0024 0895      		ret
+  51               	.L5:
+  52               	.LM8:
+  53 0026 8333      		cpi r24,lo8(51)
+  54 0028 01F4      		brne .L6
+  55               	.LM9:
+  56 002a 2A9A      		sbi 37-32,2
+  57 002c 0895      		ret
+  58               	.L6:
+  59               	.LM10:
+  60 002e 8433      		cpi r24,lo8(52)
+  61 0030 01F4      		brne .L7
+  62               	.LM11:
+  63 0032 2B9A      		sbi 37-32,3
+  64 0034 0895      		ret
+  65               	.L7:
+  66               	.LM12:
+  67 0036 8533      		cpi r24,lo8(53)
+  68 0038 01F4      		brne .L8
+  69               	.LM13:
+  70 003a 2C9A      		sbi 37-32,4
+  71 003c 0895      		ret
+  72               	.L8:
+  73               	.LM14:
+  74 003e 8633      		cpi r24,lo8(54)
+  75 0040 01F4      		brne .L14
+  76               	.LM15:
+  77 0042 2D9A      		sbi 37-32,5
+  78 0044 0895      		ret
+  79               	.L3:
+  80               	.LM16:
+  81 0046 8033      		cpi r24,lo8(48)
+  82 0048 01F4      		brne .L14
+  83               	.LM17:
+  84 004a 8381      		ldd r24,Z+3
+  85 004c 8133      		cpi r24,lo8(49)
+  86 004e 01F4      		brne .L9
+  87               	.LM18:
+  88 0050 2898      		cbi 37-32,0
+  89 0052 0895      		ret
+  90               	.L9:
+  91               	.LM19:
+  92 0054 8233      		cpi r24,lo8(50)
+  93 0056 01F4      		brne .L10
+  94               	.LM20:
+  95 0058 2998      		cbi 37-32,1
+  96 005a 0895      		ret
+  97               	.L10:
+  98               	.LM21:
+  99 005c 8333      		cpi r24,lo8(51)
+ 100 005e 01F4      		brne .L11
+ 101               	.LM22:
+ 102 0060 2A98      		cbi 37-32,2
+ 103 0062 0895      		ret
+ 104               	.L11:
+ 105               	.LM23:
+ 106 0064 8433      		cpi r24,lo8(52)
+ 107 0066 01F4      		brne .L12
+ 108               	.LM24:
+ 109 0068 2B98      		cbi 37-32,3
+ 110 006a 0895      		ret
+ 111               	.L12:
+ 112               	.LM25:
+ 113 006c 8533      		cpi r24,lo8(53)
+ 114 006e 01F4      		brne .L13
+ 115               	.LM26:
+ 116 0070 2C98      		cbi 37-32,4
+ 117 0072 0895      		ret
+ 118               	.L13:
+ 119               	.LM27:
+ 120 0074 8633      		cpi r24,lo8(54)
+ 121 0076 01F4      		brne .L14
+ 122               	.LM28:
+ 123 0078 2D98      		cbi 37-32,5
+ 124               	.L14:
+ 125 007a 0895      		ret
+ 126               	.LFE2:
+ 128               		.data
+ 129               	.LC0:
+ 130 0000 0A0D 2055 		.string	"\n\r USART 6 LED String Switch \n\r"
+ 130      5341 5254 
+ 130      2036 204C 
+ 130      4544 2053 
+ 130      7472 696E 
+ 131               	.LC1:
+ 132 0020 0A0D 2054 		.string	"\n\r Type input and hit Enter: "
+ 132      7970 6520 
+ 132      696E 7075 
+ 132      7420 616E 
+ 132      6420 6869 
+ 133               	.LC2:
+ 134 003e 0A0D 2057 		.string	"\n\r Wrong input!! Try Again "
+ 134      726F 6E67 
+ 134      2069 6E70 
+ 134      7574 2121 
+ 134      2054 7279 
+ 135               		.text
+ 136               	.global	main
+ 138               	main:
+ 139               	.LFB3:
+ 140               	.LM29:
+ 141 007c CF92      		push r12
+ 142 007e DF92      		push r13
+ 143 0080 EF92      		push r14
+ 144 0082 FF92      		push r15
+ 145 0084 0F93      		push r16
+ 146 0086 1F93      		push r17
+ 147 0088 DF93      		push r29
+ 148 008a CF93      		push r28
+ 149 008c CDB7      		in r28,__SP_L__
+ 150 008e DEB7      		in r29,__SP_H__
+ 151 0090 C256      		subi r28,lo8(-(-98))
+ 152 0092 D040      		sbci r29,hi8(-(-98))
+ 153 0094 0FB6      		in __tmp_reg__,__SREG__
+ 154 0096 F894      		cli
+ 155 0098 DEBF      		out __SP_H__,r29
+ 156 009a 0FBE      		out __SREG__,__tmp_reg__
+ 157 009c CDBF      		out __SP_L__,r28
+ 158               	/* prologue: function */
+ 159               	/* frame size = 98 */
+ 160               	.LM30:
+ 161 009e 8FEF      		ldi r24,lo8(-1)
+ 162 00a0 84B9      		out 36-32,r24
+ 163               	.LM31:
+ 164 00a2 DE01      		movw r26,r28
+ 165 00a4 AD5B      		subi r26,lo8(-(67))
+ 166 00a6 BF4F      		sbci r27,hi8(-(67))
+ 167 00a8 E0E0      		ldi r30,lo8(.LC0)
+ 168 00aa F0E0      		ldi r31,hi8(.LC0)
+ 169 00ac 80E2      		ldi r24,lo8(32)
+ 170               	.L16:
+ 171 00ae 0190      		ld r0,Z+
+ 172 00b0 0D92      		st X+,r0
+ 173 00b2 8150      		subi r24,lo8(-(-1))
+ 174 00b4 01F4      		brne .L16
+ 175               	.LM32:
+ 176 00b6 DE01      		movw r26,r28
+ 177 00b8 9596      		adiw r26,37
+ 178 00ba E0E0      		ldi r30,lo8(.LC1)
+ 179 00bc F0E0      		ldi r31,hi8(.LC1)
+ 180 00be 8EE1      		ldi r24,lo8(30)
+ 181               	.L17:
+ 182 00c0 0190      		ld r0,Z+
+ 183 00c2 0D92      		st X+,r0
+ 184 00c4 8150      		subi r24,lo8(-(-1))
+ 185 00c6 01F4      		brne .L17
+ 186               	.LM33:
+ 187 00c8 DE01      		movw r26,r28
+ 188 00ca 1996      		adiw r26,9
+ 189 00cc E0E0      		ldi r30,lo8(.LC2)
+ 190 00ce F0E0      		ldi r31,hi8(.LC2)
+ 191 00d0 8CE1      		ldi r24,lo8(28)
+ 192               	.L18:
+ 193 00d2 0190      		ld r0,Z+
+ 194 00d4 0D92      		st X+,r0
+ 195 00d6 8150      		subi r24,lo8(-(-1))
+ 196 00d8 01F4      		brne .L18
+ 197               	.LM34:
+ 198 00da 87E6      		ldi r24,lo8(103)
+ 199 00dc 90E0      		ldi r25,hi8(103)
+ 200 00de 0E94 0000 		call Uart_Init
+ 201               	.LM35:
+ 202 00e2 CE01      		movw r24,r28
+ 203 00e4 8D5B      		subi r24,lo8(-(67))
+ 204 00e6 9F4F      		sbci r25,hi8(-(67))
+ 205 00e8 0E94 0000 		call Uart_Puts
+ 206               	.LM36:
+ 207 00ec 95E2      		ldi r25,lo8(37)
+ 208 00ee C92E      		mov r12,r25
+ 209 00f0 D12C      		mov r13,__zero_reg__
+ 210 00f2 CC0E      		add r12,r28
+ 211 00f4 DD1E      		adc r13,r29
+ 212               	.LM37:
+ 213 00f6 8E01      		movw r16,r28
+ 214 00f8 0F5F      		subi r16,lo8(-(1))
+ 215 00fa 1F4F      		sbci r17,hi8(-(1))
+ 216               	.LM38:
+ 217 00fc 89E0      		ldi r24,lo8(9)
+ 218 00fe E82E      		mov r14,r24
+ 219 0100 F12C      		mov r15,__zero_reg__
+ 220 0102 EC0E      		add r14,r28
+ 221 0104 FD1E      		adc r15,r29
+ 222               	.L27:
+ 223               	.LM39:
+ 224 0106 C601      		movw r24,r12
+ 225 0108 0E94 0000 		call Uart_Puts
+ 226               	.LM40:
+ 227 010c C801      		movw r24,r16
+ 228 010e 68E0      		ldi r22,lo8(8)
+ 229 0110 70E0      		ldi r23,hi8(8)
+ 230 0112 0E94 0000 		call Uart_Gets
+ 231               	.L19:
+ 232               	.LM41:
+ 233 0116 8091 C000 		lds r24,192
+ 234 011a 87FF      		sbrs r24,7
+ 235 011c 00C0      		rjmp .L19
+ 236               	.LM42:
+ 237 011e 8A81      		ldd r24,Y+2
+ 238 0120 8233      		cpi r24,lo8(50)
+ 239 0122 01F4      		brne .L20
+ 240 0124 8885      		ldd r24,Y+8
+ 241 0126 8333      		cpi r24,lo8(51)
+ 242 0128 01F4      		brne .L20
+ 243               	.LM43:
+ 244 012a C801      		movw r24,r16
+ 245 012c 0E94 0000 		call parserecCommand
+ 246 0130 00C0      		rjmp .L27
+ 247               	.L20:
+ 248               	.LM44:
+ 249 0132 C701      		movw r24,r14
+ 250 0134 0E94 0000 		call Uart_Puts
+ 251 0138 00C0      		rjmp .L27
+ 252               	.LFE3:
+ 286               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\galahad\AppData\Local\Temp/ccozrBCL.s:2      *ABS*:0000003f __SREG__
+C:\Users\galahad\AppData\Local\Temp/ccozrBCL.s:3      *ABS*:0000003e __SP_H__
+C:\Users\galahad\AppData\Local\Temp/ccozrBCL.s:4      *ABS*:0000003d __SP_L__
+C:\Users\galahad\AppData\Local\Temp/ccozrBCL.s:5      *ABS*:00000034 __CCP__
+C:\Users\galahad\AppData\Local\Temp/ccozrBCL.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\galahad\AppData\Local\Temp/ccozrBCL.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\galahad\AppData\Local\Temp/ccozrBCL.s:18     .text:00000000 parserecCommand
+C:\Users\galahad\AppData\Local\Temp/ccozrBCL.s:138    .text:0000007c main
+
+UNDEFINED SYMBOLS
+Uart_Init
+Uart_Puts
+Uart_Gets
+__do_copy_data
