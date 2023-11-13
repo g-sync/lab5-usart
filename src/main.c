@@ -39,28 +39,28 @@ int main() {
         // Receive the character
         
         if (receivedChar[0] == 'A') {
-            PORTB = 0x00;  // Turn off all LEDs
-            PORTB |= (1 << LED1);  // Turn on LED1
+            
+            PORTB ^= (1 << LED1);  // Turn on LED1
 
         } else if (receivedChar[0] == 'B') {
-            PORTB = 0x00;  // Turn off all LEDs
-            PORTB |= (1 << LED2);  // Turn on LED2
+            
+            PORTB ^= (1 << LED2);  // Turn on LED2
 
         } else if (receivedChar[0] == 'C') {
-            PORTB = 0x00;  // Turn off all LEDs
-            PORTB |= (1 << LED3);  // Turn on LED3
+            
+            PORTB ^= (1 << LED3);  // Turn on LED3
 
         } else if (receivedChar[0] == 'D') {
-            PORTB = 0x00;  // Turn off all LEDs
-            PORTB |= (1 << LED4);  // Turn on LED4
+            
+            PORTB ^= (1 << LED4);  // Turn on LED4
 
         } else if (receivedChar[0] == 'E') {
-            PORTB = 0x00;  // Turn off all LEDs
-            PORTB |= (1 << LED5);  // Turn on LED5
+            
+            PORTB ^= (1 << LED5);  // Turn on LED5
 
         } else if (receivedChar[0] == 'F') {
-            PORTB = 0x00;  // Turn off all LEDs
-            PORTB |= (1 << LED6);  // Turn on LED6
+         
+            PORTB ^= (1 << LED6);  // Turn on LED6
 
         } else {
             Uart_Puts(str4);
